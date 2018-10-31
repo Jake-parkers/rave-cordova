@@ -61,4 +61,7 @@ Rave.prototype.render = function (link) {
     window.open(link, '_blank')
 }
 
+
+
+
 window.Rave = Rave;
