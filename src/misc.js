@@ -23,38 +23,38 @@ function PaymentObject() {
         PBFPubKey: {
             required: "true",
             type: "string",
-            isEmpty: (data) => {
+            isEmpty: function(data) {
               return data === "" || data == null || data == undefined
             }
           },
           txref: {
             required: "true",
             type: "string",
-            isEmpty: (data) => {
+            isEmpty: function (data) {
               return data === "" || data == null || data == undefined
             }
           },
           customer_phone: {
             required: "true",
             type: "string",
-            isEmpty: (data) => {
+            isEmpty: function (data) {
               return data === "" || data == null || data == undefined
             }
           },
           customer_email: {
             required: "true",
             type: "string",
-            isEmpty: (data) => {
+            isEmpty: function (data) {
               return data === "" || data == null || data == undefined
             },
-            isValidEmail: (email) => {
+            isValidEmail: function (email) {
               return email.match(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
             }
           },
           amount: {
             required: "true",
             type: "number",
-            isEmpty: (data) => {
+            isEmpty: function (data) {
               return data === "" || data == null || data == undefined
             }
           },
@@ -72,7 +72,7 @@ function PaymentObject() {
           },
           subaccounts: {
             required: false,
-            isValidArray: (array) => {
+            isValidArray: function (array) {
               return Array.isArray(array)
             }
           },
@@ -103,7 +103,7 @@ function PaymentObject() {
           redirect_url: {
             required: false,
             type: "string",
-            isValidUri: (email) => {
+            isValidUri: function (email) {
               return email.match(/\w+:(\/?\/?)[^\s]+/g)
             }
           }
@@ -175,15 +175,15 @@ PaymentObject.prototype.validate = function(object) {
 }
 
 PaymentObject.prototype.getAmount = function () {
-    
+    return this.amount
 }
 
 PaymentObject.prototype.getCurrency = function () {
-    
+    return this.currency
 }
 
 PaymentObject.prototype.getEmail = function () {
-    
+    return this.customer_email
 }
 
 export { PaymentObject }

@@ -34,6 +34,7 @@ Rave.prototype.init = function (payload) {
  */
 Rave.prototype.preRender = function (paymentObject, cb) {
     var url = this.production == true ? live : sandbox;
+    if(!Object.keys(PaymentObject).includes("validated")) return "Be sure to have called the init() method";
     paymentObject["PBFPubKey"] = this.publicKey;
         return fetch(url, {
             method: "POST", 
