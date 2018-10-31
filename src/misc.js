@@ -20,13 +20,6 @@ function PaymentObject() {
     this.customer_lastname = ""
     this.custom_title = "";
     this.schema = {
-        PBFPubKey: {
-            required: "true",
-            type: "string",
-            isEmpty: function(data) {
-              return data === "" || data == null || data == undefined
-            }
-          },
           txref: {
             required: "true",
             type: "string",

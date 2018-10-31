@@ -25,7 +25,8 @@ $ cordova platform add android
 
 ## App Integration
 <br/>
-Add this script tage to www/index.html
+Add this script tag to /www/index.html
+
 ```
 <script type="text/javascript" src="js/rave.js"></script>
 ```
@@ -55,7 +56,7 @@ var payment_obj = rave.init({
 
 Depending on whether the payload you passed in is correct or not, ```payment_obj``` would hold your valid ```payload``` or an ```error object``` if any issue is found.
 
-**HINT: ** customer_email, amount, customer_phone, txref and the public key you passed when creating the instace of ```Rave``` are all compulsory. Omitting any one of them would result in and error object being returned instead of your payload.
+**HINT: customer_email, amount, customer_phone, txref and the public key you passed when creating the instace of ```Rave``` are all compulsory. Omitting any one of them would result in and error object being returned instead of your payload.
 
 2. preRender(payment_obj, callback) - This method gets a secure ```link``` which you can then use to spin up the Rave modal with your payment details. The secure link can be accessed by the ```callback function``` you passed in (See Example below). 
 In case you didn't call ```init(payload)``` before calling this method, An ```error``` will be returned instead of a secure ```link```. An example is shown below 
@@ -74,6 +75,8 @@ rave.preRender(payment_obj, function(err, link) {
     rave.render(link)
 })
 ```
+
+**Calling the render() method is optional. You can just handle the secure link the way you want.**
 
 
 
@@ -122,5 +125,24 @@ cordova plugin add cordova-plugin-inappbrowser
 window.open = cordova.InAppBrowser.open;
 ```
 
-6. Excecute ```cordova run browser``` or ```cordova run android```
+6. Add ```<allow-navigation href="*" />``` to your config.xml file
+
+7. Replace the ```Content-Security-Policy``` meta tag in /www/index.html with this one:
+
+```
+<meta http-equiv="Content-Security-Policy" content="font-src 'self' data:; img-src * data:; default-src gap://ready file://* *; script-src 'self' 'unsafe-inline' 'unsafe-eval' * ; style-src 'self' 'unsafe-inline' *">
+```
+
+8. Excecute ```cordova run browser``` or ```cordova run android```.
 To deploy to the ios simulator, follow steps [here](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#project-configuration)
+
+License
+<br/>
+
+Released under [MIT License](https://github.com/Jake-parkers/rave-cordova-sdk/blob/master/License)
+
+
+Contributions
+<br/>
+
+Pull requests and new issues are welcome. See [CONTRIBUTING.md](https://github.com/Jake-parkers/rave-cordova-sdk/blob/master/CONTRIBUTING.md) for details.

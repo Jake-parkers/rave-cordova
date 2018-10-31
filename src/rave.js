@@ -34,8 +34,8 @@ Rave.prototype.init = function (payload) {
  */
 Rave.prototype.preRender = function (paymentObject, cb) {
     var url = this.production == true ? live : sandbox;
-    if(!Object.keys(PaymentObject).includes("validated")) return "Be sure to have called the init() method";
-    paymentObject["PBFPubKey"] = this.publicKey;
+    if(paymentObject["validated"]) {
+        paymentObject["PBFPubKey"] = this.publicKey;
         return fetch(url, {
             method: "POST", 
             mode: "cors", 
@@ -52,6 +52,7 @@ Rave.prototype.preRender = function (paymentObject, cb) {
             if(data["status"] == "error") return cb(data["message"], null)
             else return cb(null, data["data"]["link"])
         })
+    }else return "Please call init() method"
         
 }
 
