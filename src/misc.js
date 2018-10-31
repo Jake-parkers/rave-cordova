@@ -1,3 +1,6 @@
+/**
+ * Constructor
+ */
 function PaymentObject() {
     this.amount = "";
     this.currency = "";
@@ -6,6 +9,14 @@ function PaymentObject() {
     this.redirect_url = ""
 }
 
+/**
+ * Creates and returns a payment object
+ * @param {*} amount 
+ * @param {*} currency 
+ * @param {*} customer_email 
+ * @param {*} txref 
+ * @param {*} redirect_url 
+ */
 PaymentObject.prototype.create =  function (amount, currency, customer_email, txref, redirect_url) {
     this.amount = amount;
     this.currency = currency;
