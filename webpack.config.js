@@ -4,6 +4,6 @@ module.exports = {
   entry: ['./src/rave.js', './src/misc.js'],
   output: {
     filename: 'rave.js',
-    path: path.resolve('./dist')
+    path: path.resolve('../../www/js')
   }
 };
