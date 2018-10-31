@@ -136,13 +136,13 @@ window.open = cordova.InAppBrowser.open;
 8. Excecute ```cordova run browser``` or ```cordova run android```.
 To deploy to the ios simulator, follow steps [here](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#project-configuration)
 
-License
+# License
 <br/>
 
 Released under [MIT License](https://github.com/Jake-parkers/rave-cordova-sdk/blob/master/License)
 
 
-Contributions
+# Contributions
 <br/>
 
 Pull requests and new issues are welcome. See [CONTRIBUTING.md](https://github.com/Jake-parkers/rave-cordova-sdk/blob/master/CONTRIBUTING.md) for details.
