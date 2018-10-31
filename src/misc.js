@@ -1,3 +1,5 @@
+import * as Validator from './helper/validate'
+const validate = Validator.validate
 /**
  * Constructor
  */
@@ -7,6 +9,18 @@ function PaymentObject() {
     this.customer_email = "";
     this.txref = ""
     this.redirect_url = ""
+    this.meta = ""
+    this.custom_description = ""
+    this.customer_phone = ""
+    this.PBFPubkey = ""
+    this.integrity_hash = ""
+    this.payment_options = ""
+    this.payment_plan = ""
+    this.subaccounts = []
+    this.country = ""
+    this.customer_firstname = ""
+    this.customer_lastname = ""
+    this.custom_title = ""
 }
 
 /**
@@ -17,32 +31,29 @@ function PaymentObject() {
  * @param {*} txref 
  * @param {*} redirect_url 
  */
-PaymentObject.prototype.create =  function (amount, currency, customer_email, txref, redirect_url) {
-    this.amount = amount;
-    this.currency = currency;
-    this.customer_email = customer_email
-    this.txref = txref;
-    this.redirect_url = redirect_url
-
-    return {
-        amount, 
-        currency, 
-        customer_email,
-        txref,
-        redirect_url
+PaymentObject.prototype.create =  function (payload) {
+    const result = validate(payload)
+    if(result.valid == false) return result.error
+    else {
+        for (const key in result.payload) {
+            if (result.payload.hasOwnProperty(key)) {
+                this.key = result.payload[key];
+            }
+        }
+        return result.payload;
     }
 }
 
 PaymentObject.prototype.getAmount = function () {
-    return this.amount
+    
 }
 
 PaymentObject.prototype.getCurrency = function () {
-    return this.currency
+    
 }
 
 PaymentObject.prototype.getEmail = function () {
-    return this.customer_email
+    
 }
 
 export { PaymentObject }

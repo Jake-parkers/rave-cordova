@@ -22,8 +22,9 @@ function Rave(publicKey, production) {
  * @param {*} txref 
  * @param {*} redirect_url 
  */
-Rave.prototype.init = function (amount, currency, customer_email, txref, redirect_url) {  
-    return paymentObject.create(amount, currency, customer_email, txref, redirect_url)
+Rave.prototype.init = function (payload) {  
+    console.log(payload)
+    return paymentObject.create(payload)
 }
 
 /**

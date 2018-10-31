@@ -1,11 +1,11 @@
 {
-  "name": "play-cordova-rave",
+  "name": "play-cordova-rave2",
   "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=production",
-    "prestart": "npm install webpack webpack-cli --save-dev"
+    "start": "webpack --mode=production",
+    "prestart": "npm install webpack webpack-cli --save"
   },
   "keywords": [],
   "author": "",
