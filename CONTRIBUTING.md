@@ -5,4 +5,4 @@
 ## General Guidelines
 <br/>
 
-    Code style. Please follow local code style. Ask if you're unsure.
+ **Code style**: Please follow local code style. Ask if you're unsure.
