@@ -59,8 +59,9 @@ Rave.prototype.preRender = function (paymentObject, cb) {
 /**
  * Spins up the modal in the inappbrowser
  */
-Rave.prototype.render = function (link) {
-    window.open(link, '_blank')
+Rave.prototype.render = function (link, browserInstance) {
+    // window.open(link, '_blank')
+    return browserInstance.create(link, '_blank');
 }
 
 
